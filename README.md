@@ -2,11 +2,6 @@
 
 Starts and exposes a Neo4j service optimized for the Origins graph including pre-built indexes and constraints.
 
-## Dependencies
-
-- Redis
-- Neo4j (see [origins-neo4j-docker](https://github.com/cbmi/origins-neo4j-docker/))
-
 ## Usage
 
 The `--privileged` flag is required to set the `ulimit` when the Neo4j server starts. See http://docs.neo4j.org/chunked/stable/server-installation.html#linux-install for more details.
