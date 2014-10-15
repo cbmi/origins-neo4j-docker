@@ -1,4 +1,4 @@
-FROM dockerfile/java
+FROM dockerfile/java:oracle-java8
 
 MAINTAINER Byron Ruth <b@devel.io>
 
@@ -16,7 +16,7 @@ RUN rm -rf neo4j-community-2.1.4/data
 RUN mv neo4j-community-2.1.4 neo4j
 
 # Uncomment server address to allow for incoming connections
-RUN sed -i 's/#org.neo4j.server.webserver.address/org.neo4j.server.webserver.address/g' neo4j/conf/neo4j-server.properties
+RUN sed -i "s/#org.neo4j.server.webserver.address/org.neo4j.server.webserver.address/g" neo4j/conf/neo4j-server.properties
 
 # Entrypoint into running the Neo4j server
 # Defined as a separate entrypoint because it requires running as a privileged container
@@ -27,4 +27,6 @@ RUN chmod +x entrypoint.sh
 
 EXPOSE 7474
 
-ENTRYPOINT /entrypoint.sh
+ENTRYPOINT ["/entrypoint.sh"]
+
+CMD ["serve"]
