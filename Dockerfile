@@ -9,11 +9,11 @@ RUN apt-get -qq update
 WORKDIR /
 
 # Download and install Neo4j
-RUN curl --silent "http://dist.neo4j.org/neo4j-community-2.1.5-unix.tar.gz" > neo4j-community-2.1.5-unix.tar.gz
-RUN tar zxf neo4j-community-2.1.5-unix.tar.gz
-RUN rm neo4j-community-2.1.5-unix.tar.gz
-RUN rm -rf neo4j-community-2.1.5/data
-RUN mv neo4j-community-2.1.5 neo4j
+RUN curl --silent "http://dist.neo4j.org/neo4j-community-2.1.6-unix.tar.gz" > neo4j-community-2.1.6-unix.tar.gz
+RUN tar zxf neo4j-community-2.1.6-unix.tar.gz
+RUN rm neo4j-community-2.1.6-unix.tar.gz
+RUN rm -rf neo4j-community-2.1.6/data
+RUN mv neo4j-community-2.1.6 neo4j
 
 # Uncomment server address to allow for incoming connections
 RUN sed -i "s/#org.neo4j.server.webserver.address/org.neo4j.server.webserver.address/g" neo4j/conf/neo4j-server.properties
