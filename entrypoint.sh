@@ -16,6 +16,10 @@ fi
 # Set the authorization flag
 sed -i "s/dbms.security.authorization_enabled=.*/dbms.security.authorization_enabled=$auth/g" conf/neo4j-server.properties
 
+if [ "$ALLOW_STORE_UPGRADE" = '1' ]; then
+    sed -i "s/#allow_store_upgrade=true/allow_store_upgrade=true/g" conf/neo4j.properties
+fi
+
 # Server
 if [ "$1" = 'serve' ]; then
     /neo4j/bin/neo4j console
