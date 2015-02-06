@@ -9,13 +9,13 @@ Neo4j image optimized for the Origins graph including pre-defined indexes and co
 Start the server:
 
 ```
-docker run -d --privileged -p 7474:7474 dbhi/origins-neo4j
+docker run -d --privileged -P dbhi/origins-neo4j
 ```
 
 Mount a local data directory:
 
 ```
-docker run -d --privileged -p 7474:7474 -v /path/to/data/graph.db:/neo4j/data/graph.db dbhi/origins-neo4j
+docker run -d --privileged -P -v /path/to/data:/neo4j/data dbhi/origins-neo4j
 ```
 
 Run the shell:

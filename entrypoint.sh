@@ -5,7 +5,16 @@
 ulimit -n 65536
 
 # Setup/migrate database
-/neo4j/bin/neo4j-shell -path /neo4j/data/graph.db -file /neo4j-setup.cypher > /dev/null
+/neo4j/bin/neo4j-shell -path /neo4j/data/graph.db -file /neo4j/schema.cypher > /dev/null
+
+if [ "$AUTH_ENABLED" = '1' ]; then
+    auth='true'
+else
+    auth='false'
+fi
+
+# Set the authorization flag
+sed -i "s/dbms.security.authorization_enabled=.*/dbms.security.authorization_enabled=$auth/g" conf/neo4j-server.properties
 
 # Server
 if [ "$1" = 'serve' ]; then
